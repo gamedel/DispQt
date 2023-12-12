@@ -5,38 +5,13 @@ import QtQuick.Controls 2.2
 ApplicationWindow {
     visible: true
     width: 640
-    height: 480
+    height: 640
     title: "API Viewer"
     
-   /*Component {
-    id: listItemDelegate
-    Item {
-        width: listView.width
-        height: 50
-        Row {
-            Text {
-                id: nameLabel
-                text: modelData.name
-                }
-            Text {
-                id: emailLabel
-                text: modelData.email
-                anchors.left: nameLabel.right
-                anchors.leftMargin: 10
-                }
-            }
-         }
-     }*/
-
-  // UserComponent {
-        //id: myComponent
-       // text: "Hello, world!"
-        //anchors.centerIn: parent
-  //  }
-
+   
 
   ScrollView {
-    width: 200
+    width: 400
     anchors.horizontalCenter: parent.horizontalCenter // Выровнять по горизонтали
     anchors.top: parent.top// Добавить отступ сверху
      anchors.topMargin: 20 // Добавить отступ сверху

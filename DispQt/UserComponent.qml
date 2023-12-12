@@ -7,7 +7,7 @@ Item {
  height: 50
 
  Rectangle {
-    width: 200
+    width: 400
     height: 30
     color: "white"
     
