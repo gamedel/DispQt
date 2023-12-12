@@ -11,6 +11,7 @@ Item {
     height: 30
     color: "white"
     
+
     RowLayout {
             anchors.fill: parent
             spacing: 10 // Установите нужный отступ
