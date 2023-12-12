@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/qt/qml/dispqt">
+        <file>main.qml</file>
+        <file>UserComponent.qml</file>
+    </qresource>
+</RCC>

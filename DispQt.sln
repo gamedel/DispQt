@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DispQt", "DispQt\DispQt.vcxproj", "{157819D3-2FD4-4CBC-9929-67620748E646}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{157819D3-2FD4-4CBC-9929-67620748E646}.Debug|x64.ActiveCfg = Debug|x64
+		{157819D3-2FD4-4CBC-9929-67620748E646}.Debug|x64.Build.0 = Debug|x64
+		{157819D3-2FD4-4CBC-9929-67620748E646}.Release|x64.ActiveCfg = Release|x64
+		{157819D3-2FD4-4CBC-9929-67620748E646}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78E7A407-7215-4F91-B65A-FB681F3D8C85}
+	EndGlobalSection
+EndGlobal
