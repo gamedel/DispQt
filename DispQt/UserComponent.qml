@@ -25,18 +25,15 @@ Item {
       }
      
      
-       Loader {
-       id: myLoader
-       source: "CommentPopup.qml"
-        }
-
      Button {
     text: "Комментировать"
     anchors.centerIn: parent
     anchors.right: parent.right
     onClicked: {
 
-
+   var component = Qt.createComponent("CommentPopup.qml");
+                    var window = component.createObject();
+                    window.show();
 
 
 
