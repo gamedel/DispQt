@@ -2,5 +2,6 @@
     <qresource prefix="/qt/qml/dispqt">
         <file>main.qml</file>
         <file>UserComponent.qml</file>
+        <file>CommentPopup.qml</file>
     </qresource>
 </RCC>

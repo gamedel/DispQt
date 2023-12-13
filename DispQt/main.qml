@@ -32,7 +32,7 @@ ApplicationWindow {
 
 
     Component.onCompleted: {
-        //apiHandler.fetchData();
+        apiHandler.fetchData();
     }
 
     Button {

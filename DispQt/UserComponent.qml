@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.3
 Item {
  property alias text: userName.text
  height: 50
+ property Loader myPopupLoader: null
 
  Rectangle {
     width: 400
@@ -22,12 +23,31 @@ Item {
         text: "Подробнее"
         anchors.right: parent.right
       }
-      Button {
-        text: "Комментировать"
-        anchors.centerIn: parent
-        anchors.right: parent.right
-      }
+     
+     
+       Loader {
+       id: myLoader
+       source: "CommentPopup.qml"
+        }
+
+     Button {
+    text: "Комментировать"
+    anchors.centerIn: parent
+    anchors.right: parent.right
+    onClicked: {
+
+
+
+
+
+       }
     }
+
+
+
+      }
+
+
 
  }
 }

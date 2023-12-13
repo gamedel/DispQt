@@ -21,29 +21,48 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Source Files\QML">
+      <UniqueIdentifier>{08e8b192-35ca-499d-a1f6-ddc72a9a53c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CPP">
+      <UniqueIdentifier>{7246d459-179f-48d3-92e8-1f3a9674419b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <QtRcc Include="qml.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <None Include="main.qml">
-      <Filter>Source Files</Filter>
-    </None>
     <ClCompile Include="apihandler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="CacheManager.cpp">
+      <Filter>Source Files\CPP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="main.qml">
+      <Filter>Source Files\QML</Filter>
+    </None>
     <None Include="UserComponent.qml">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\QML</Filter>
+    </None>
+    <None Include="CommentPopup.qml">
+      <Filter>Source Files\QML</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="apihandler.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cachemanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DispQt", "DispQt\DispQt.vcxproj", "{157819D3-2FD4-4CBC-9929-67620748E646}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qtvars", "DispQt\x64\Debug\qmake\temp\qtvars.vcxproj", "{2D1635B6-A2F0-3B65-9DEA-899244E8B13E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{157819D3-2FD4-4CBC-9929-67620748E646}.Debug|x64.Build.0 = Debug|x64
 		{157819D3-2FD4-4CBC-9929-67620748E646}.Release|x64.ActiveCfg = Release|x64
 		{157819D3-2FD4-4CBC-9929-67620748E646}.Release|x64.Build.0 = Release|x64
+		{2D1635B6-A2F0-3B65-9DEA-899244E8B13E}.Debug|x64.ActiveCfg = Debug|x64
+		{2D1635B6-A2F0-3B65-9DEA-899244E8B13E}.Debug|x64.Build.0 = Debug|x64
+		{2D1635B6-A2F0-3B65-9DEA-899244E8B13E}.Release|x64.ActiveCfg = Release|x64
+		{2D1635B6-A2F0-3B65-9DEA-899244E8B13E}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

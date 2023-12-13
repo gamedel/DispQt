@@ -38,7 +38,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
-    <QtModules>quick</QtModules>
+    <QtModules>quick;sql</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -90,13 +90,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="apihandler.cpp" />
+    <ClCompile Include="CacheManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <None Include="CommentPopup.qml" />
     <None Include="UserComponent.qml" />
     <QtRcc Include="qml.qrc" />
     <None Include="main.qml" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="apihandler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cachemanager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
