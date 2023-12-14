@@ -1,35 +1,75 @@
-// main.qml
+п»ї// main.qml
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.3
+
 
 ApplicationWindow {
     visible: true
     width: 640
     height: 640
-    title: "API Viewer"
+    title: "Р‘Р°Р·Р° СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ"
     
    
+    
+
+
+
+ColumnLayout  {
+
+anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
+
+    anchors.topMargin: 20
+
+    RowLayout{
+    anchors.horizontalCenter: parent.horizontalCenter
+    spacing: 30 
+     Text{
+     text:"РЎРѕС‚СЂСѓРґРЅРёРєРё:"  
+      font.pixelSize: 20 
+     }
+      Button {
+     id: requestbt
+     text: "РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє"
+     onClicked: {
+        apiHandler.fetchData(); 
+       }
+      }
+     }
+     
+    
+
+     Item { height: 20 }
 
   ScrollView {
-    width: 400
-    anchors.horizontalCenter: parent.horizontalCenter // Выровнять по горизонтали
-    anchors.top: parent.top// Добавить отступ сверху
-     anchors.topMargin: 20 // Добавить отступ сверху
+   // height: 100
+    Layout.fillWidth: true
+    Layout.preferredHeight: 400
+    width:width+200
+
+     clip: true
+    anchors.horizontalCenter: parent.horizontalCenter
 
     ListView {
         id: listView
-         width: parent.height // Установите ширину списка
-         height: parent.height // Высота списка равна высоте родителя
-         spacing: UserComponent.height
-        //anchors.centerIn: parent // Выравнивание списка по центру родительского элемента       
-         delegate: UserComponent {
+         height: parent.height
+         
+         spacing: UserComponent.height    
+        
+        delegate: UserComponent {
         userid: modelData.id
         username: modelData.name
         email: modelData.email
         comment: modelData.comment     
        }
+
       }
     }
+
+
+    }
+
 
 
 
@@ -37,14 +77,7 @@ ApplicationWindow {
         apiHandler.loadCachedData();
     }
 
-    Button {
-    id: button
-    text: "Fetch Data"
-    anchors.centerIn: parent
-    onClicked: {
-        apiHandler.fetchData(); // Вызов метода fetchData при нажатии кнопки
-    }
-    }
+   
 
 
     Connections {
@@ -54,6 +87,15 @@ ApplicationWindow {
             listView.model = json;
         }
     }
+
+
+    
+
+
+
+
+
+
 
     
 }

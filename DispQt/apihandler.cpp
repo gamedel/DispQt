@@ -13,14 +13,13 @@ ApiHandler::ApiHandler(QObject* parent) : QObject(parent), cacheManager()
 
 }
 
+
 QString ApiHandler::mergeGetCached(const QString& _getData, const QString& _cachedData) {
+    
     // Преобразование строки JSON в QJsonDocument
     QJsonDocument doc = QJsonDocument::fromJson(_getData.toUtf8());
-
     // Получение массива объектов из документа JSON
-    QJsonArray array = doc.array();
-    
-
+    QJsonArray array = doc.array();  
     // Преобразование строки комментариев в QJsonArray
     QJsonArray cachedDataJArray = QJsonDocument::fromJson(_cachedData.toUtf8()).array();
 

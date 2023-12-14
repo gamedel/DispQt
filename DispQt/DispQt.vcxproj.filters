@@ -32,7 +32,7 @@
     <QtRcc Include="qml.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <ClCompile Include="apihandler.cpp">
+    <ClCompile Include="ApiHandler.cpp">
       <Filter>Source Files\CPP</Filter>
     </ClCompile>
     <ClCompile Include="CacheManager.cpp">
@@ -40,7 +40,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="main.qml">
+    <None Include="Main.qml">
       <Filter>Source Files\QML</Filter>
     </None>
     <None Include="UserComponent.qml">

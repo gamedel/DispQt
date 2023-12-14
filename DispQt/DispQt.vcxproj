@@ -89,13 +89,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="apihandler.cpp" />
+    <ClCompile Include="ApiHandler.cpp" />
     <ClCompile Include="CacheManager.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="CommentPopup.qml" />
     <None Include="UserComponent.qml" />
     <QtRcc Include="qml.qrc" />
-    <None Include="main.qml" />
+    <None Include="Main.qml" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="apihandler.h" />

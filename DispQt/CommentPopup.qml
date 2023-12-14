@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.3
 Popup {
 
 property string useridpop: ""
+property string usernamepop: ""
 property string commentpop: ""
 
          id: commentpopup
@@ -17,13 +18,13 @@ property string commentpop: ""
 Column {
             anchors.centerIn: parent
             
-            
             Text {
-                text: "Комментарий:"
+                text: usernamepop
                 anchors.horizontalCenter: parent.horizontalCenter
             }
+
             Text {
-                text: commentpop
+                text: "Комментарий:"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
             TextField {
@@ -40,7 +41,6 @@ Column {
                 onClicked: {
                 apiHandler.commentData(useridpop, textField.text);
                 commentpopup.close()
-                   //console.log("Введенный текст: " + textField.text)
                     
                 }
             }

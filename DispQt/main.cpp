@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 
     engine.rootContext()->setContextProperty("apiHandler", &apiHandler);
 
-    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/dispqt/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/dispqt/Main.qml")));
 
    
     if (engine.rootObjects().isEmpty()) 

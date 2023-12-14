@@ -22,27 +22,24 @@ Item {
             anchors.fill: parent
             spacing: 10 // Установите нужный отступ
       
-     Text {
-        id: userName2
-        text: comment
-      }
+     
 
-      Text {
+      Text {    
+      Layout.leftMargin: 10
         id: userName
-        text: username
+        text: username      
       }
       Button {
+      
         text: "Подробнее"
         anchors.right: parent.right
       }
      
-
-
-
       CommentPopup {
             id: compopup
             commentpop: comment
             useridpop: userid
+            usernamepop: username
         }
 
      Button {
@@ -55,9 +52,7 @@ Item {
        }
     }
 
-
-
-      }
+  }
 
 
 
