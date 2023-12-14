@@ -1,12 +1,51 @@
 ﻿import QtQuick 2.3
+import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.3
 
-Rectangle {
-    width: 200
-    height: 100
-    color: "red"
+Popup {
 
-    Text {
-        anchors.centerIn: parent
-        text: "Hello, World!"
-    }
+property string useridpop: ""
+property string commentpop: ""
+
+         id: commentpopup
+            width: 300
+            height: 200
+            modal: true
+            focus: true
+            closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+Column {
+            anchors.centerIn: parent
+            
+            
+            Text {
+                text: "Комментарий:"
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+            Text {
+                text: commentpop
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+            TextField {
+                id: textField
+                width: parent.width * 0.8
+                anchors.horizontalCenter: parent.horizontalCenter
+                placeholderText: "Введите текст здесь"
+            }
+
+            Button {
+                text: "ОК"
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                onClicked: {
+                apiHandler.commentData(useridpop, textField.text);
+                commentpopup.close()
+                   //console.log("Введенный текст: " + textField.text)
+                    
+                }
+            }
+        }
+
+
+
 }

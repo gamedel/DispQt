@@ -23,8 +23,10 @@ ApplicationWindow {
          spacing: UserComponent.height
         //anchors.centerIn: parent // Выравнивание списка по центру родительского элемента       
          delegate: UserComponent {
-        text: modelData.name
-        
+        userid: modelData.id
+        username: modelData.name
+        email: modelData.email
+        comment: modelData.comment     
        }
       }
     }
@@ -32,7 +34,7 @@ ApplicationWindow {
 
 
     Component.onCompleted: {
-        apiHandler.fetchData();
+        apiHandler.loadCachedData();
     }
 
     Button {

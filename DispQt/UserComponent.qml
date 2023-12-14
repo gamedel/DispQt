@@ -3,9 +3,14 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
 Item {
- property alias text: userName.text
+ property string userid: ""
+ property string username: ""
+ property string email: ""
+ property string comment: ""
+
  height: 50
- property Loader myPopupLoader: null
+ 
+
 
  Rectangle {
     width: 400
@@ -16,26 +21,36 @@ Item {
     RowLayout {
             anchors.fill: parent
             spacing: 10 // Установите нужный отступ
+      
+     Text {
+        id: userName2
+        text: comment
+      }
+
       Text {
         id: userName
+        text: username
       }
       Button {
         text: "Подробнее"
         anchors.right: parent.right
       }
      
-     
+
+
+
+      CommentPopup {
+            id: compopup
+            commentpop: comment
+            useridpop: userid
+        }
+
      Button {
     text: "Комментировать"
     anchors.centerIn: parent
     anchors.right: parent.right
     onClicked: {
-
-   var component = Qt.createComponent("CommentPopup.qml");
-                    var window = component.createObject();
-                    window.show();
-
-
+          compopup.open()
 
        }
     }
