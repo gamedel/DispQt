@@ -29,9 +29,7 @@ Model::Model(QObject* parent): QObject(parent)
 void Model::commentAdd(const QString& _userid, const QString& _comment) {
 
     if (!_comment.isEmpty()) {
-        // Преобразование строки JSON в QJsonDocument
         QJsonDocument doc = QJsonDocument::fromJson(cachedData.toUtf8());
-        // Получение массива объектов из документа JSON
         QJsonArray array = doc.array();
         for (int i = 0; i < array.size(); ++i) {
             QJsonObject obj = array[i].toObject();
@@ -42,12 +40,10 @@ void Model::commentAdd(const QString& _userid, const QString& _comment) {
                 break;
             }
 
-
         }
         doc.setArray(array);
         cachedData = QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
         cacheData("https://jsonplaceholder.typicode.com/users", cachedData);
-       // loadCachedData();
         emit commentAdded();
     }
 }
@@ -86,4 +82,46 @@ QString Model::loadData(const QString& key) {
         return QString();
     }
 }
+
+
+
+void Model::mergeGetCached(const QString& _url, const QString& _getData, const QString& _cachedData) {
+
+
+    if (cachedData.isEmpty()) {
+        cachedData = _getData;
+        cacheData(_url, cachedData);
+    }
+    else {
+
+    QJsonDocument doc = QJsonDocument::fromJson(_getData.toUtf8());
+    QJsonArray array = doc.array();
+    QJsonArray cachedDataJArray = QJsonDocument::fromJson(_cachedData.toUtf8()).array();
+
+    // Добавление комментариев в каждый объект в массиве
+    for (int i = 0; i < array.size(); ++i) {
+        QJsonObject obj = array[i].toObject();
+        for (const QJsonValue& comment : cachedDataJArray) {
+            QJsonObject commentObj = comment.toObject();
+            if (commentObj["id"].toInt() == obj["id"].toInt()) {
+                // Если id совпадают и комментарий не пустой, добавляем комментарий к объекту
+                QString commentText = commentObj["comment"].toString();
+                if (!commentText.isEmpty()) {
+                    obj["comment"] = commentText;
+                }
+                break;
+            }
+        }
+        array[i] = obj;
+    }
+    // Обновление документа JSON новым массивом
+    doc.setArray(array);
+    
+        cachedData = QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
+        cacheData(_url, cachedData);
+    }
+
+}
+
+
 

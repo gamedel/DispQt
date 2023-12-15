@@ -33,12 +33,11 @@ anchors.horizontalCenter: parent.horizontalCenter
      id: requestbt
      text: "Получить список"
      onClicked: {
-        controller.fetchData(); 
+        controller.requestData(); 
        }
       }
      }
      
-    
 
      Item { height: 20 }
 
@@ -69,7 +68,6 @@ anchors.horizontalCenter: parent.horizontalCenter
 
 
     }
-
 
 
 

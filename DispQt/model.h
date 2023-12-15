@@ -15,6 +15,7 @@ class Model : public QObject
    public:
     explicit Model(QObject* parent);
     void cacheData(const QString& key, const QString& value);
+    void mergeGetCached(const QString& _url, const QString& _getData, const QString& _cachedData);
     QString loadData(const QString& key);
     QString cachedData;
     void commentAdd(const QString& _userid, const QString& _comment);

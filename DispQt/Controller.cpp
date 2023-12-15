@@ -5,60 +5,11 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-//QString getData;
 
 Controller::Controller(QObject* parent) : QObject(parent), model(parent)
 {
-    connect(&m_networkAccessManager, &QNetworkAccessManager::finished, this, &Controller::onFinished);
-    connect(&model, &Model::commentAdded, this, &Controller::onCommentAdded);
-}
-
-
-QString Controller::mergeGetCached(const QString& _getData, const QString& _cachedData) {
-    
-    // Преобразование строки JSON в QJsonDocument
-    QJsonDocument doc = QJsonDocument::fromJson(_getData.toUtf8());
-    // Получение массива объектов из документа JSON
-    QJsonArray array = doc.array();  
-    // Преобразование строки комментариев в QJsonArray
-    QJsonArray cachedDataJArray = QJsonDocument::fromJson(_cachedData.toUtf8()).array();
-
-    // Добавление комментариев в каждый объект в массиве
-    for (int i = 0; i < array.size(); ++i) {
-        QJsonObject obj = array[i].toObject();
-
-        // Поиск комментария с таким же id, как у объекта
-        for (const QJsonValue& comment : cachedDataJArray) {
-            QJsonObject commentObj = comment.toObject();
-            if (commentObj["id"].toInt() == obj["id"].toInt()) {
-                // Если id совпадают и комментарий не пустой, добавляем комментарий к объекту
-                QString commentText = commentObj["comment"].toString();
-                if (!commentText.isEmpty()) {
-                    obj["comment"] = commentText;
-                }
-                break;
-            }
-        }
-
-        array[i] = obj;
-    }
-
-    // Обновление документа JSON новым массивом
-    doc.setArray(array);
-
-    // Преобразование обновленного документа JSON обратно в строку
-    return QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
-}
-
-
-
-
-
-
-
-
-void Controller::onCommentAdded() {
-    Controller::refreshUI();
+    connect(&m_networkAccessManager, &QNetworkAccessManager::finished, this, &Controller::onRecieveData);//Подписываемся на событие приема Json 
+    connect(&model, &Model::commentAdded, this, &Controller::onCommentAdded);//Подписываемся на событие добавления комментария
 }
 
 void Controller::refreshUI() {
@@ -68,12 +19,26 @@ void Controller::refreshUI() {
 }
 
 
+
+
+
+
+
 void Controller::commentData(QString userId, QString commText)
 {
     model.commentAdd(userId, commText);
 }
 
-void Controller::fetchData()
+void Controller::onCommentAdded() {
+    Controller::refreshUI();
+}
+
+
+
+
+
+
+void Controller::requestData()
 {
     QUrl url("https://jsonplaceholder.typicode.com/users");
     QNetworkRequest request(url);
@@ -82,23 +47,11 @@ void Controller::fetchData()
 
 
 
-QString getData;
-
-void Controller::onFinished(QNetworkReply* reply)
+void Controller::onRecieveData(QNetworkReply* reply)
 {
     if (reply->error() == QNetworkReply::NoError) {
  
-        if (model.cachedData.isEmpty()) {
-            model.cachedData = QString::fromUtf8(reply->readAll());
-            model.cacheData(reply->url().toString(), model.cachedData);
-        }
-        else {
-            getData = QString::fromUtf8(reply->readAll());
-            model.cachedData = mergeGetCached(getData,model.cachedData);
-            model.cacheData(reply->url().toString(), model.cachedData);
-        }
-
-
+        model.mergeGetCached(reply->url().toString(), QString::fromUtf8(reply->readAll()), model.cachedData);
         emit dataFetched(model.cachedData);
     }
     reply->deleteLater();
