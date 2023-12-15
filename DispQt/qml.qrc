@@ -4,5 +4,6 @@
         <file>CommentPopup.qml</file>
         <file>Main.qml</file>
         <file>UserInfoPopup.qml</file>
+        <file>UserEditPopup.qml</file>
     </qresource>
 </RCC>

@@ -15,14 +15,14 @@ public:
     Q_INVOKABLE void requestData();
     Q_INVOKABLE void commentData(QString userId,QString commText);
     Q_INVOKABLE void refreshUI();
-    
+    Q_INVOKABLE void editUserName(QString userId, QString nameText);
 
 signals:
     void dataFetched(const QString& data);
 
 private slots:
     void onRecieveData(QNetworkReply* reply);
-    void onCommentAdded();
+    void onCacheEdited();
 private:    
     QNetworkAccessManager m_networkAccessManager;
     Model model;

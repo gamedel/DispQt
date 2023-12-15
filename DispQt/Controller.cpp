@@ -9,7 +9,7 @@
 Controller::Controller(QObject* parent) : QObject(parent), model(parent)
 {
     connect(&m_networkAccessManager, &QNetworkAccessManager::finished, this, &Controller::onRecieveData);//Подписываемся на событие приема Json 
-    connect(&model, &Model::commentAdded, this, &Controller::onCommentAdded);//Подписываемся на событие добавления комментария
+    connect(&model, &Model::cacheEdited, this, &Controller::onCacheEdited);//Подписываемся на событие добавления комментария
 }
 
 void Controller::refreshUI() {
@@ -21,7 +21,10 @@ void Controller::refreshUI() {
 
 
 
-
+void Controller::editUserName(QString userId, QString nameText)
+{
+    model.editUserName(userId, nameText);
+}
 
 
 void Controller::commentData(QString userId, QString commText)
@@ -29,7 +32,7 @@ void Controller::commentData(QString userId, QString commText)
     model.commentAdd(userId, commText);
 }
 
-void Controller::onCommentAdded() {
+void Controller::onCacheEdited() {
     Controller::refreshUI();
 }
 

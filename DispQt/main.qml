@@ -5,15 +5,15 @@ import QtQuick.Layouts 1.3
 
 
 ApplicationWindow {
+   title: "База сотрудников"
     visible: true
     width: 640
-    height: 640
-    title: "База сотрудников"
-    
+    height: 600   
+    minimumWidth: width
+    maximumWidth: width
+    minimumHeight: height
+    maximumHeight: height
    
-    
-
-
 
 ColumnLayout  {
 
@@ -38,11 +38,9 @@ anchors.horizontalCenter: parent.horizontalCenter
       }
      }
      
-
      Item { height: 20 }
 
   ScrollView {
-   // height: 100
     Layout.fillWidth: true
     Layout.preferredHeight: 400
     width:width+200
@@ -70,12 +68,9 @@ anchors.horizontalCenter: parent.horizontalCenter
     }
 
 
-
     Component.onCompleted: {
         controller.refreshUI();
     }
-
-   
 
 
     Connections {
@@ -85,15 +80,6 @@ anchors.horizontalCenter: parent.horizontalCenter
             listView.model = json;
         }
     }
-
-
-    
-
-
-
-
-
-
 
     
 }

@@ -20,17 +20,15 @@ Item {
 
     RowLayout {
             anchors.fill: parent
-            spacing: 10 // Установите нужный отступ
-      
-     
-
-      Text {    
-      Layout.leftMargin: 10
-        id: userName
-        text: username      
-      }
-      
-     
+            spacing: 10
+            
+      UserEditPopup {
+            id: editpopup
+            useridedit: userid
+            usernameedit: username
+            parent: editButton
+            anchors.centerIn: parent
+        }
       CommentPopup {
             id: compopup
             commentpop: comment
@@ -50,36 +48,44 @@ Item {
         }
 
 
-        Button {
-      id: infoButton
-        text: "Подробнее"
-        anchors.right: parent.right
-        onClicked: {
-          infopopup.open()
 
-        }
+
+      Text { 
+      id: userName
+      Layout.leftMargin: 10
+        text: username      
       }
-
-      Button {
-      id: editButton
-        text: "!"
-        anchors.right: parent.right
-        onClicked: {
-          infopopup.open()
-
-        }
-      }
-
+      
+     Item { width:  130 - userName.width}
+        
      Button {
     id: commentButton
     text: "Комментировать"
-    anchors.centerIn: parent
-    anchors.right: parent.right
     onClicked: {
           compopup.open()
 
        }
     }
+    Button {
+      id: editButton
+        text: " ! "
+        onClicked: {
+          editpopup.open()
+
+        }
+      }
+
+        Button {
+      id: infoButton
+        text: "Подробнее"
+        onClicked: {
+          infopopup.open()
+
+        }
+      }
+
+      
+
 
   }
 

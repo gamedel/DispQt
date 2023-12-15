@@ -6,9 +6,7 @@
 
 void myMessageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg)
 {
-    // В этой функции вы можете обрабатывать сообщения как вам нужно.
-    // Например, вы можете записывать их в файл или выводить в консоль.
-    // В этом примере мы просто выводим все сообщения в стандартный вывод.
+
     QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:

@@ -44,9 +44,33 @@ void Model::commentAdd(const QString& _userid, const QString& _comment) {
         doc.setArray(array);
         cachedData = QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
         cacheData("https://jsonplaceholder.typicode.com/users", cachedData);
-        emit commentAdded();
+        emit cacheEdited();
     }
 }
+
+
+void Model::editUserName(const QString& _userid, const QString& _username) {
+
+    
+        QJsonDocument doc = QJsonDocument::fromJson(cachedData.toUtf8());
+        QJsonArray array = doc.array();
+        for (int i = 0; i < array.size(); ++i) {
+            QJsonObject obj = array[i].toObject();
+            if (obj["id"].toInt() == _userid.toInt()) {
+
+                obj["name"] = _username;
+                array[i] = obj;
+                break;
+            }
+
+        }
+        doc.setArray(array);
+        cachedData = QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
+        cacheData("https://jsonplaceholder.typicode.com/users", cachedData);
+        emit cacheEdited();
+    
+}
+
 
 
 void Model::cacheData(const QString& key, const QString& value) { 

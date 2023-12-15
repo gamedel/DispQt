@@ -52,6 +52,9 @@
     <None Include="UserInfoPopup.qml">
       <Filter>Source Files\QML</Filter>
     </None>
+    <None Include="UserEditPopup.qml">
+      <Filter>Source Files\QML</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="controller.h">

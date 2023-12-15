@@ -19,10 +19,11 @@ class Model : public QObject
     QString loadData(const QString& key);
     QString cachedData;
     void commentAdd(const QString& _userid, const QString& _comment);
+    void editUserName(const QString& _userid, const QString& _username);
    private:
     QSqlDatabase db;
    signals:
-    void commentAdded();
+    void cacheEdited();
 };
 
 
