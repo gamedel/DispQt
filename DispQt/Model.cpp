@@ -1,10 +1,13 @@
-#include "cachemanager.h"
+#include "model.h"
 #include <QUrl>
 #include <QNetworkRequest>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+//#include <iostream>
 
 
-
-CacheManager::CacheManager()
+Model::Model(QObject* parent): QObject(parent)
 {
     
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -21,10 +24,36 @@ CacheManager::CacheManager()
     }
    
     cachedData = loadData("https://jsonplaceholder.typicode.com/users");
-
 }
 
-void CacheManager::cacheData(const QString& key, const QString& value) { 
+void Model::commentAdd(const QString& _userid, const QString& _comment) {
+
+    if (!_comment.isEmpty()) {
+        // Преобразование строки JSON в QJsonDocument
+        QJsonDocument doc = QJsonDocument::fromJson(cachedData.toUtf8());
+        // Получение массива объектов из документа JSON
+        QJsonArray array = doc.array();
+        for (int i = 0; i < array.size(); ++i) {
+            QJsonObject obj = array[i].toObject();
+            if (obj["id"].toInt() == _userid.toInt()) {
+
+                obj["comment"] = _comment;
+                array[i] = obj;
+                break;
+            }
+
+
+        }
+        doc.setArray(array);
+        cachedData = QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
+        cacheData("https://jsonplaceholder.typicode.com/users", cachedData);
+       // loadCachedData();
+        emit commentAdded();
+    }
+}
+
+
+void Model::cacheData(const QString& key, const QString& value) { 
 
     QSqlQuery query;
     query.prepare("INSERT OR REPLACE INTO api_cache (key, value) VALUES (:key, :value)");
@@ -38,7 +67,7 @@ void CacheManager::cacheData(const QString& key, const QString& value) {
     cachedData = value;
 }
 
-QString CacheManager::loadData(const QString& key) {
+QString Model::loadData(const QString& key) {
     QSqlQuery query;
     query.prepare("SELECT value FROM api_cache WHERE key = :key");
     query.bindValue(":key", key);

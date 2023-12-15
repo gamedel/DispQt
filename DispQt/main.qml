@@ -33,7 +33,7 @@ anchors.horizontalCenter: parent.horizontalCenter
      id: requestbt
      text: "Получить список"
      onClicked: {
-        apiHandler.fetchData(); 
+        controller.fetchData(); 
        }
       }
      }
@@ -74,14 +74,14 @@ anchors.horizontalCenter: parent.horizontalCenter
 
 
     Component.onCompleted: {
-        apiHandler.loadCachedData();
+        controller.refreshUI();
     }
 
    
 
 
     Connections {
-        target: apiHandler
+        target: controller
         onDataFetched: {
             var json = JSON.parse(data);
             listView.model = json;

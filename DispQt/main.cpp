@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "apihandler.h"
+#include "controller.h"
 
 
 void myMessageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg)
@@ -41,9 +41,9 @@ int main(int argc, char* argv[])
 
 
     QQmlApplicationEngine engine;
-    ApiHandler apiHandler;
+    Controller controller;
 
-    engine.rootContext()->setContextProperty("apiHandler", &apiHandler);
+    engine.rootContext()->setContextProperty("controller", &controller);
 
     engine.load(QUrl(QStringLiteral("qrc:/qt/qml/dispqt/Main.qml")));
 

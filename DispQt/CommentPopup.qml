@@ -43,7 +43,7 @@ Column {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 onClicked: {
-                apiHandler.commentData(useridpop, textField.text);
+                controller.commentData(useridpop, textField.text);
                 commentpopup.close()
                     
                 }

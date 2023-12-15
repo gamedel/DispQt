@@ -32,10 +32,10 @@
     <QtRcc Include="qml.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <ClCompile Include="ApiHandler.cpp">
+    <ClCompile Include="Controller.cpp">
       <Filter>Source Files\CPP</Filter>
     </ClCompile>
-    <ClCompile Include="CacheManager.cpp">
+    <ClCompile Include="Model.cpp">
       <Filter>Source Files\CPP</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,14 +51,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="apihandler.h">
+    <QtMoc Include="controller.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cachemanager.h">
+    <QtMoc Include="model.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

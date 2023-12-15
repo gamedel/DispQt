@@ -89,8 +89,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ApiHandler.cpp" />
-    <ClCompile Include="CacheManager.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="main.cpp" />
     <None Include="CommentPopup.qml" />
     <None Include="UserComponent.qml" />
@@ -98,10 +98,10 @@
     <None Include="Main.qml" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="apihandler.h" />
+    <QtMoc Include="controller.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cachemanager.h" />
+    <QtMoc Include="model.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
