@@ -6,26 +6,18 @@
 
 CacheManager::CacheManager()
 {
-    QSqlQuery query;
+    
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("cache.db");
 
     if (!db.open()) {
         // Обработка ошибки открытия базы данных
-        int hh = 0;
-        QSqlError error = query.lastError();
-        qDebug() << "Database error: " << error.text();
-        QString jj = error.text();
-        hh++;
+        
     }
-
+    QSqlQuery query;
     if (!query.exec("CREATE TABLE IF NOT EXISTS api_cache (key TEXT PRIMARY KEY, value TEXT)")) {
         // Обработка ошибки создания таблицы
-        int hh = 0;
-        QSqlError error = query.lastError();
-        qDebug() << "Database error: " << error.text();
-        QString jj = error.text();
-        hh++;
+       
     }
    
     cachedData = loadData("https://jsonplaceholder.typicode.com/users");

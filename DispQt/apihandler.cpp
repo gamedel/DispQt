@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-QString getData;
+//QString getData;
 
 ApiHandler::ApiHandler(QObject* parent) : QObject(parent), cacheManager()
 {
@@ -51,11 +51,13 @@ QString ApiHandler::mergeGetCached(const QString& _getData, const QString& _cach
 }
 
 
+
+
 void ApiHandler::addComment(const QString& _userid, const QString& _comment) {
 
     if (!_comment.isEmpty()) {
         // Преобразование строки JSON в QJsonDocument
-        QJsonDocument doc = QJsonDocument::fromJson(getData.toUtf8());
+        QJsonDocument doc = QJsonDocument::fromJson(cacheManager.cachedData.toUtf8());
         // Получение массива объектов из документа JSON
         QJsonArray array = doc.array();
         for (int i = 0; i < array.size(); ++i) {
@@ -70,8 +72,8 @@ void ApiHandler::addComment(const QString& _userid, const QString& _comment) {
 
         }
         doc.setArray(array);
-        getData = QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
-        cacheManager.cacheData("https://jsonplaceholder.typicode.com/users", getData);
+        cacheManager.cachedData = QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
+        cacheManager.cacheData("https://jsonplaceholder.typicode.com/users", cacheManager.cachedData);
         loadCachedData();
     }
 }
@@ -86,7 +88,7 @@ void ApiHandler::addComment(const QString& _userid, const QString& _comment) {
 
 void ApiHandler::loadCachedData() {
     if (!cacheManager.cachedData.isEmpty()) {
-        getData = cacheManager.cachedData;
+        //getData = cacheManager.cachedData;
         emit dataFetched(cacheManager.cachedData);
     }
 }
@@ -105,6 +107,7 @@ void ApiHandler::fetchData()
 
 
 
+QString getData;
 
 void ApiHandler::onFinished(QNetworkReply* reply)
 {
@@ -114,19 +117,17 @@ void ApiHandler::onFinished(QNetworkReply* reply)
 
         if (cacheManager.cachedData.isEmpty()) {
             // Если данных нет в кэше, сохраняем новые данные
-            getData = QString::fromUtf8(reply->readAll());
-            cacheManager.cacheData(reply->url().toString(), getData);
+            cacheManager.cachedData = QString::fromUtf8(reply->readAll());
+            cacheManager.cacheData(reply->url().toString(), cacheManager.cachedData);
         }
         else {
-            // Если данные уже есть в кэше, объединяем их с новыми данными
-            // Здесь вам нужно будет написать свою логику объединения
-            getData = mergeGetCached(getData,cacheManager.cachedData);
-            cacheManager.cacheData(reply->url().toString(), getData);
+            getData = QString::fromUtf8(reply->readAll());
+            cacheManager.cachedData = mergeGetCached(getData,cacheManager.cachedData);
+            cacheManager.cacheData(reply->url().toString(), cacheManager.cachedData);
         }
 
 
-
-        emit dataFetched(getData);
+        emit dataFetched(cacheManager.cachedData);
     }
     reply->deleteLater();
 }

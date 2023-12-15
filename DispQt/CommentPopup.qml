@@ -22,6 +22,10 @@ Column {
                 text: usernamepop
                 anchors.horizontalCenter: parent.horizontalCenter
             }
+             Text {
+                text: commentpop
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
 
             Text {
                 text: "Комментарий:"
