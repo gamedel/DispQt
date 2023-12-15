@@ -3,5 +3,6 @@
         <file>UserComponent.qml</file>
         <file>CommentPopup.qml</file>
         <file>Main.qml</file>
+        <file>UserInfoPopup.qml</file>
     </qresource>
 </RCC>

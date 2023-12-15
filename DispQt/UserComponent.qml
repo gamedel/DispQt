@@ -29,20 +29,49 @@ Item {
         id: userName
         text: username      
       }
-      Button {
       
-        text: "Подробнее"
-        anchors.right: parent.right
-      }
      
       CommentPopup {
             id: compopup
             commentpop: comment
             useridpop: userid
             usernamepop: username
+            parent: commentButton
+            anchors.centerIn: parent
+        }
+        UserInfoPopup {
+            id: infopopup
+            commentinfo: comment
+            useridinfo: userid
+            usernameinfo: username
+            emailinfo: email
+            parent: infoButton
+            anchors.centerIn: parent
         }
 
+
+        Button {
+      id: infoButton
+        text: "Подробнее"
+        anchors.right: parent.right
+        onClicked: {
+          infopopup.open()
+
+        }
+      }
+
+      Button {
+      id: editButton
+        text: "!"
+        anchors.right: parent.right
+        onClicked: {
+          infopopup.open()
+
+        }
+      }
+
      Button {
+    id: commentButton
     text: "Комментировать"
     anchors.centerIn: parent
     anchors.right: parent.right

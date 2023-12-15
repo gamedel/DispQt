@@ -4,11 +4,12 @@ import QtQuick.Layouts 1.3
 
 Popup {
 
-property string useridpop: ""
-property string usernamepop: ""
-property string commentpop: ""
+property string useridinfo: ""
+property string usernameinfo: ""
+property string commentinfo: ""
+property string emailinfo: ""
 
-         id: commentpopup
+         id: infopopup
             width: 300
             height: 200
             modal: true
@@ -19,32 +20,29 @@ ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             Item { height: 10 }
             Text {
-                text: usernamepop
+                text: "Имя: "+usernameinfo
                 anchors.horizontalCenter: parent.horizontalCenter
             }
              
              Item { height: 20 }
-
-            Text {
-                text: "Комментарий:"
+             Text {
+                text: "Почта: "+emailinfo
                 anchors.horizontalCenter: parent.horizontalCenter
-            }
-            TextField {
-                id: textField
-                text: commentpop
-                Layout.preferredWidth: 200
-                anchors.horizontalCenter: parent.horizontalCenter
-                placeholderText: "Введите текст здесь"
             }
             Item { height: 20 }
-            Button {
-                text: "ОК"
+           Text {
+                text: "Комментарий: "+commentinfo
                 anchors.horizontalCenter: parent.horizontalCenter
-                Layout.preferredWidth: 50
+            }
+
+            Item { height: 20 }
+            Button {
+                text: "Закрыть"
+                anchors.horizontalCenter: parent.horizontalCenter
+                Layout.preferredWidth: 100
 
                 onClicked: {
-                controller.commentData(useridpop, textField.text);
-                commentpopup.close()
+                infopopup.close()
                     
                 }
             }

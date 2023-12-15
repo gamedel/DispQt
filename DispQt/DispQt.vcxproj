@@ -94,6 +94,7 @@
     <ClCompile Include="main.cpp" />
     <None Include="CommentPopup.qml" />
     <None Include="UserComponent.qml" />
+    <None Include="UserInfoPopup.qml" />
     <QtRcc Include="qml.qrc" />
     <None Include="Main.qml" />
   </ItemGroup>
